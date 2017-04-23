@@ -19,7 +19,7 @@ public class ImpactDamage : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         Destructible other = collision.gameObject.GetComponent<Destructible>();
         if (other != null) {
-            other.Damage(gameObject, 100);
+            other.Damage(gameObject, damage);
             Destructible me = GetComponent<Destructible>();
             me.Kill();
         }

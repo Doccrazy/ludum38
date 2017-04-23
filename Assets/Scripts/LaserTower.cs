@@ -9,7 +9,7 @@ public class LaserTower : AbstractWeapon {
 
     LaserTower() {
         fireRate = .5f;
-        maxAngle = 15;
+        maxAngle = 25;
     }
 
     protected override bool TryFire() {

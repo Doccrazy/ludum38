@@ -9,7 +9,7 @@ public class EnemyType : MonoBehaviour {
             Color col = new Color(1, 0, 1);
             if (type == "normal") {
                 col = new Color(0, 0, 1, 0.75f);
-            } else if (type == "fast") {
+            } else if (type == "mass") {
                 col = new Color(1, 1, 0, 0.75f);
             } else if (type == "boss") {
                 col = new Color(1, 0, 0, 0.75f);
@@ -20,11 +20,11 @@ public class EnemyType : MonoBehaviour {
 
     public float RandomInitVelocity() {
         if (type == "normal") {
+            return Random.Range(1f, 1.5f);
+        } else if (type == "mass") {
             return Random.Range(2f, 3f);
-        } else if (type == "fast") {
-            return Random.Range(4f, 6f);
         } else if (type == "boss") {
-            return Random.Range(1.5f, 2f);
+            return Random.Range(0.5f, 1f);
         }
         throw new System.Exception();
     }

@@ -8,7 +8,7 @@ public class RocketTower : AbstractWeapon {
 
     RocketTower() {
         fireRate = 5;
-        maxAngle = 90;
+        maxAngle = 75;
     }
 
     override protected bool TryFire () {
