@@ -11,7 +11,6 @@ public abstract class AbstractWeapon : MonoBehaviour {
         if (lastFireTime == -9999) {
             lastFireTime = Time.fixedTime - fireRate + initialDelay;
         } else if (Time.fixedTime - lastFireTime > fireRate) {
-            Debug.Log(Time.fixedTime - lastFireTime);
             if (TryFire()) {
                 lastFireTime = Time.fixedTime;
             }

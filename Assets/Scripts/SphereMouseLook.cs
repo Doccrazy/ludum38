@@ -26,8 +26,10 @@ public class SphereMouseLook : MonoBehaviour {
     }
 
     private void Update() {
-        Vector3 gravityUp = transform.localPosition.normalized;
-        LookRotation(transform, Quaternion.FromToRotation(sphere.InverseTransformDirection(transform.up), gravityUp) * transform.localRotation, Camera.main.transform);
+        if (Camera.main != null) {
+            Vector3 gravityUp = transform.localPosition.normalized;
+            LookRotation(transform, Quaternion.FromToRotation(sphere.InverseTransformDirection(transform.up), gravityUp) * transform.localRotation, Camera.main.transform);
+        }
     }
 
     public void Init(Transform character, Transform camera) {

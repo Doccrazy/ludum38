@@ -3,8 +3,12 @@ using System.Collections;
 using System;
 
 public class LaserShot : AbstractBullet {
-    private float velocity = 10;
+    private float velocity = 20;
     private Rigidbody rb;
+
+    public LaserShot() {
+        damage = 20;
+    }
 
     internal override void Target(Vector3 fireDir, Transform enemy) {
         rb = GetComponent<Rigidbody>();
@@ -14,19 +18,11 @@ public class LaserShot : AbstractBullet {
 
     // Use this for initialization
     void Start() {
-        InvokeRepeating("Expire", 10f, 9999f);
+        Invoke("Expire", 10f);
     }
 
     // Update is called once per frame
     void FixedUpdate() {
         transform.rotation = Quaternion.LookRotation(rb.velocity);
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log(other);
-        if (other.CompareTag("Enemy")) {
-
-        }
-        Destroy(gameObject);
     }
 }

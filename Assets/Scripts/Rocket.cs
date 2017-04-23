@@ -9,6 +9,10 @@ public class Rocket : AbstractBullet {
     private Rigidbody rb;
     private Transform target;
 
+    public Rocket() {
+        damage = 100;
+    }
+
     internal override void Target(Vector3 fireDir, Transform enemy) {
         rb = GetComponent<Rigidbody>();
         rb.velocity = fireDir * initialVelocity;
@@ -18,7 +22,7 @@ public class Rocket : AbstractBullet {
     // Use this for initialization
     void Start() {
         rb = GetComponent<Rigidbody>();
-        InvokeRepeating("Expire", 10f, 9999f);
+        Invoke("Expire", 10f);
     }
 
     // Update is called once per frame
@@ -32,13 +36,5 @@ public class Rocket : AbstractBullet {
             }
             rb.AddForce(transform.TransformDirection(Vector3.forward) * accelForce);
         }
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log(other);
-        if (other.CompareTag("Enemy")) {
-
-        }
-        Destroy(gameObject);
     }
 }

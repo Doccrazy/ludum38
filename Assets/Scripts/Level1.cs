@@ -2,22 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level1 : MonoBehaviour {
-    public GameObject planet;
-    public GameObject attackIndicator;
-    public float distance;
-    private Vector3[] attackVectors = { new Vector3(1, 0, 1), new Vector3(-1, 0, 1), new Vector3(1, 0, -1), new Vector3(-1, 0, -1) };
+public class Level1 : AbstractLevel {
+    private AttackDef[] attacks = {
+        new AttackDef(new Vector3(1, 0, 0), 10, "normal"),
+        new AttackDef(new Vector3(-1, 0, 0), 10, "normal"),
+        new AttackDef(new Vector3(0, 0, 1), 10, "normal"),
+        new AttackDef(new Vector3(0, 0, -1), 10, "normal"),
+    };
 
 	// Use this for initialization
 	void Start () {
-        foreach (Vector3 av in attackVectors) {
-            Vector3 pos = planet.transform.position - av * distance;
-            Instantiate(attackIndicator, pos, Quaternion.LookRotation(-Vector3.ProjectOnPlane(Vector3.up, av), av));
+        foreach (AttackDef ad in attacks) {
+            CreateIndicator(ad);
         }
+        Invoke("StartAttack", 3f);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void StartAttack() {
+        foreach (GameObject ind in GameObject.FindGameObjectsWithTag("Indicator")) {
+            Destroy(ind);
+        }
+        InvokeRepeating("Spawn", 0, 1f);
+    }
+
+    void Spawn() {
+        foreach (AttackDef ad in attacks) {
+            if (ad.amount > 0) {
+                ad.amount--;
+                Vector3 spawn = GetRandomSpawnPoint(ad);
+                GameObject enemy = Instantiate(GetEnemy(ad.type), spawn, Quaternion.LookRotation(ad.dir, Vector3.ProjectOnPlane(Vector3.up, ad.dir)));
+                enemy.GetComponent<Rigidbody>().velocity = (planet.transform.position - enemy.transform.position).normalized * Random.Range(2f, 3f);
+                foreach (TriangleExplosion t in enemy.GetComponentsInChildren<TriangleExplosion>()) {
+                    t.Explode();
+                }
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
 		
 	}
 }
