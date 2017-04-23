@@ -3,17 +3,16 @@ using System.Collections;
 using System;
 
 public class LaserShot : AbstractBullet {
-    private float velocity = 20;
     private Rigidbody rb;
 
     public LaserShot() {
-        damage = 20;
+        damage = Constants.LASER_DMG;
     }
 
     internal override void Target(Vector3 fireDir, Transform enemy) {
         rb = GetComponent<Rigidbody>();
         Vector3 to = (enemy.position - transform.position).normalized;
-        rb.velocity = to * velocity;
+        rb.velocity = to * Constants.LASER_VELOCITY;
     }
 
     // Use this for initialization

@@ -6,7 +6,7 @@ public class MultishotTower : AbstractWeapon {
     public float fireHeight;
 
     MultishotTower() {
-        fireRate = .1f;
+        fireRate = Constants.MULTISHOT_RATE;
         maxAngle = 80;
     }
 
@@ -28,5 +28,9 @@ public class MultishotTower : AbstractWeapon {
     // Update is called once per frame
     void Update() {
 
+    }
+
+    public override int GetCost() {
+        return Constants.ROCKET_COST;
     }
 }

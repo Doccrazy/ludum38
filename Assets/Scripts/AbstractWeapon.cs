@@ -31,4 +31,6 @@ public abstract class AbstractWeapon : MonoBehaviour {
         }
         return candidates.Count > 0 ? candidates[random ? Random.Range(0, candidates.Count) : 0] : null;
     }
+
+    public abstract int GetCost();
 }

@@ -8,7 +8,7 @@ public class LaserTower : AbstractWeapon {
     public float fireHeight;
 
     LaserTower() {
-        fireRate = .5f;
+        fireRate = Constants.LASER_RATE;
         maxAngle = 25;
     }
 
@@ -31,4 +31,8 @@ public class LaserTower : AbstractWeapon {
 	void Update () {
 		
 	}
+
+    public override int GetCost() {
+        return Constants.LASER_COST;
+    }
 }

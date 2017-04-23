@@ -7,7 +7,7 @@ public class RocketTower : AbstractWeapon {
     public float fireHeight;
 
     RocketTower() {
-        fireRate = 5;
+        fireRate = Constants.ROCKET_RATE;
         maxAngle = 75;
     }
 
@@ -25,4 +25,8 @@ public class RocketTower : AbstractWeapon {
 	void Update () {
 		
 	}
+
+    public override int GetCost() {
+        return Constants.ROCKET_COST;
+    }
 }

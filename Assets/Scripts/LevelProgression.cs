@@ -32,6 +32,9 @@ public class LevelProgression : MonoBehaviour {
         gameObject.SetActive(false);
         if (nextLevel != null) {
             nextLevel.gameObject.SetActive(true);
+        } else if (Camera.main != null) {
+            Camera.main.enabled = false;
+            GameObject.Find("OutsideCamera").GetComponent<Camera>().enabled = true;
         }
     }
 }

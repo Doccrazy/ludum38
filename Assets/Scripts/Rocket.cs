@@ -3,14 +3,14 @@ using System.Collections;
 using System;
 
 public class Rocket : AbstractBullet {
-    private float initialVelocity = 2;
+    private float initialVelocity = Constants.ROCKET_VELOCITY;
     private float accelForce = 2;
     private float steerForce = 2;
     private Rigidbody rb;
     private Transform target;
 
     public Rocket() {
-        damage = 100;
+        damage = Constants.ROCKET_DMG;
     }
 
     internal override void Target(Vector3 fireDir, Transform enemy) {
