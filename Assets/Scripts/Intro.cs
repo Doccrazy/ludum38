@@ -7,7 +7,6 @@ public class Intro : MonoBehaviour {
     public LevelProgression firstLevel;
     public Camera outsideCamera;
     public Camera playerCamera;
-    public GameObject mainUI;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +25,6 @@ public class Intro : MonoBehaviour {
         playerCamera.enabled = true;
         planetRotate.enabled = false;
         firstLevel.gameObject.SetActive(true);
-        mainUI.SetActive(true);
         gameObject.SetActive(false);
     }
 	

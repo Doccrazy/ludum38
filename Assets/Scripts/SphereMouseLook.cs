@@ -104,4 +104,7 @@ public class SphereMouseLook : MonoBehaviour {
         return q;
     }
 
+    private void OnDestroy() {
+        SetCursorLock(false);
+    }
 }

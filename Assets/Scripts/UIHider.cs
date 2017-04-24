@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UIHider : MonoBehaviour {
+    public GameObject mainUI;
+    public GameObject externalUI;
 
 	// Use this for initialization
 	void Start () {
@@ -11,6 +13,7 @@ public class UIHider : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Canvas>().enabled = Camera.main != null;
-	}
+        mainUI.SetActive(Camera.main != null);
+        externalUI.SetActive(Camera.main == null);
+    }
 }

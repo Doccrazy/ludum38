@@ -3,6 +3,7 @@ using System.Collections;
 
 public class LevelProgression : MonoBehaviour {
     public LevelProgression nextLevel;
+    public GameObject winLabel;
     private bool movedOn;
 
     // Use this for initialization
@@ -38,6 +39,7 @@ public class LevelProgression : MonoBehaviour {
         } else if (Camera.main != null) {
             Camera.main.enabled = false;
             GameObject.Find("OutsideCamera").GetComponent<Camera>().enabled = true;
+            winLabel.SetActive(true);
         }
     }
 }
