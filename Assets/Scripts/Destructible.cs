@@ -38,6 +38,7 @@ public class Destructible : MonoBehaviour {
         foreach (TriangleExplosion t in GetComponentsInChildren<TriangleExplosion>()) {
             t.Explode();
         }
+        GameObject.Find("ExplosionSound").GetComponent<AudioSource>().Play();
         Destroy(gameObject);
     }
 }
