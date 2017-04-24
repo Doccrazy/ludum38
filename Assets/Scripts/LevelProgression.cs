@@ -30,6 +30,9 @@ public class LevelProgression : MonoBehaviour {
 
     void ToNextLevel() {
         gameObject.SetActive(false);
+        if (GameObject.Find("Player") == null) {
+            return;
+        }
         if (nextLevel != null) {
             nextLevel.gameObject.SetActive(true);
         } else if (Camera.main != null) {

@@ -35,4 +35,8 @@ public class LaserTower : AbstractWeapon {
     public override int GetCost() {
         return Constants.LASER_COST;
     }
+
+    public override string GetHint() {
+        return "Laser towers only cover a very limited area with quite good damage.";
+    }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,5 +29,9 @@ public class RocketTower : AbstractWeapon {
 
     public override int GetCost() {
         return Constants.ROCKET_COST;
+    }
+
+    public override string GetHint() {
+        return "Rocket towers are slow-shooting and cause lots of single-target damage.";
     }
 }

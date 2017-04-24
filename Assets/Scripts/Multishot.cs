@@ -5,7 +5,7 @@ public class Multishot : AbstractBullet {
     private Rigidbody rb;
 
     public Multishot() {
-        damage = 2.5f;
+        damage = Constants.MULTISHOT_DMG;
     }
 
     internal override void Target(Vector3 fireDir, Transform enemy) {

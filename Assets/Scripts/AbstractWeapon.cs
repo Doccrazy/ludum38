@@ -33,4 +33,6 @@ public abstract class AbstractWeapon : MonoBehaviour {
     }
 
     public abstract int GetCost();
+
+    public abstract string GetHint();
 }

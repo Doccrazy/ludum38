@@ -31,6 +31,10 @@ public class MultishotTower : AbstractWeapon {
     }
 
     public override int GetCost() {
-        return Constants.ROCKET_COST;
+        return Constants.MULTISHOT_COST;
+    }
+
+    public override string GetHint() {
+        return "Multishot towers will hit tiny, fast enemies with high precision. They cause low damage, though.";
     }
 }
